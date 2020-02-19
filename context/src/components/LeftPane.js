@@ -6,5 +6,7 @@ const LeftPane = () => {
         <div className="pane">
             <Sends />
         </div>
-    )
-}
+    );
+};
+
+export default LeftPane;
