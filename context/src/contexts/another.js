@@ -1,6 +1,9 @@
 import React, { createContext, Component } from 'react';
+import createUseConsumer from '../lib/createUseConsumer';
+
 
 const Context = createContext();
+
 const {
     Provider,
     Consumer: AnotherConsumer
@@ -31,22 +34,8 @@ class AnotherProvider extends Component {
     }
 }
 
-function useAnother (WrappedComponent) {
-    return function UseAnother (props) {
-        return (
-            <AnotherConsumer>
-                {
-                    ({ state, actions }) => (
-                        <WrappedComponent
-                            number={state.number}
-                            increment={actions.increment}
-                        />
-                    )
-                }
-            </AnotherConsumer>
-        )
-    }
-}
+const useAnother = createUseConsumer(AnotherConsumer);
+
 
 export {
     AnotherProvider,
