@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAnother } from '../contexts/another';
 
+
 const Counter = ({ number, increment }) => {
     return (
         <div>
@@ -10,4 +11,10 @@ const Counter = ({ number, increment }) => {
     );
 };
 
-export default useAnother(Counter);
+
+export default useAnother(
+    ({ state, actions }) => ({
+        number: state.number,
+        increment: actions.increment
+    })
+)(Counter);
